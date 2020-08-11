@@ -13,9 +13,9 @@ class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.black,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.black,
+      // ),
       title: "Stateful",
       home: Homepage(),
     );
@@ -36,11 +36,22 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
+  void reset() {
+    setState(() {
+      dataToChange = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("App Bar"),
+        title: Text(
+          "App Bar",
+          style: TextStyle(
+            color: Colors.red,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -66,7 +77,22 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.white,
                 ),
               ),
-              color: Colors.cyan,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: RaisedButton(
+                onPressed: reset,
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+                child: Text(
+                  "Reset",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    color: Colors.white,
+                  ),
+                ),
+                color: Colors.black,
+              ),
             ),
           ],
         ),
